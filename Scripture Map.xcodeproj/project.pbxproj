@@ -8,22 +8,124 @@
 
 /* Begin PBXBuildFile section */
 		2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F01C07B06F00A1874D /* AppDelegate.swift */; };
-		2786D7F31C07B06F00A1874D /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F21C07B06F00A1874D /* MasterViewController.swift */; };
 		2786D7F51C07B06F00A1874D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F41C07B06F00A1874D /* DetailViewController.swift */; };
 		2786D7F81C07B06F00A1874D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2786D7F61C07B06F00A1874D /* Main.storyboard */; };
 		2786D7FA1C07B06F00A1874D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2786D7F91C07B06F00A1874D /* Assets.xcassets */; };
 		2786D7FD1C07B06F00A1874D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2786D7FB1C07B06F00A1874D /* LaunchScreen.storyboard */; };
+		2786D80F1C07B1B900A1874D /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8081C07B1B900A1874D /* Book.swift */; };
+		2786D8101C07B1B900A1874D /* geo.21.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2786D8091C07B1B900A1874D /* geo.21.sqlite */; };
+		2786D8111C07B1B900A1874D /* GeoDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D80A1C07B1B900A1874D /* GeoDatabase.swift */; };
+		2786D8121C07B1B900A1874D /* GeoPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D80B1C07B1B900A1874D /* GeoPlace.swift */; };
+		2786D8131C07B1B900A1874D /* MapScripturesIcon.psd in Resources */ = {isa = PBXBuildFile; fileRef = 2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */; };
+		2786D8141C07B1B900A1874D /* scripture.css in Resources */ = {isa = PBXBuildFile; fileRef = 2786D80D1C07B1B900A1874D /* scripture.css */; };
+		2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */; };
+		2786D84F1C07B29800A1874D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; };
+		2786D8511C07B2B300A1874D /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2786D8531C07B3E300A1874D /* VolumesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */; };
+		2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */; };
+		2786D8571C07B86D00A1874D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D8561C07B86D00A1874D /* MapKit.framework */; };
+		2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8581C07B97D00A1874D /* ScripturesViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2786D83D1C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC2B29E21B26F718001C60EA;
+			remoteInfo = "SQLite iOS";
+		};
+		2786D83F1C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC2B29EC1B26F718001C60EA;
+			remoteInfo = "SQLite iOS Tests";
+		};
+		2786D8411C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC7253AC1B52ADEB009B38B1;
+			remoteInfo = "SQLite Mac";
+		};
+		2786D8431C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC7253B51B52ADEC009B38B1;
+			remoteInfo = "SQLite Mac Tests";
+		};
+		2786D8451C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCE7BB7A1B7434F90040D364;
+			remoteInfo = "SQLiteCipher iOS";
+		};
+		2786D8471C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCE7BB831B7434F90040D364;
+			remoteInfo = "SQLiteCipher iOS Tests";
+		};
+		2786D8491C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCE7BBB01B7438610040D364;
+			remoteInfo = "SQLiteCipher Mac";
+		};
+		2786D84B1C07B26D00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCE7BBB91B7438620040D364;
+			remoteInfo = "SQLiteCipher Mac Tests";
+		};
+		2786D84D1C07B28B00A1874D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DC2B29E11B26F718001C60EA;
+			remoteInfo = "SQLite iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2786D8501C07B2AB00A1874D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				2786D8511C07B2B300A1874D /* SQLite.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2786D7ED1C07B06F00A1874D /* Scripture Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scripture Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2786D7F01C07B06F00A1874D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2786D7F21C07B06F00A1874D /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		2786D7F41C07B06F00A1874D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2786D7F71C07B06F00A1874D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2786D7F91C07B06F00A1874D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2786D7FC1C07B06F00A1874D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2786D7FE1C07B06F00A1874D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2786D8081C07B1B900A1874D /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		2786D8091C07B1B900A1874D /* geo.21.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = geo.21.sqlite; sourceTree = "<group>"; };
+		2786D80A1C07B1B900A1874D /* GeoDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoDatabase.swift; sourceTree = "<group>"; };
+		2786D80B1C07B1B900A1874D /* GeoPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPlace.swift; sourceTree = "<group>"; };
+		2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = MapScripturesIcon.psd; sourceTree = "<group>"; };
+		2786D80D1C07B1B900A1874D /* scripture.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = scripture.css; sourceTree = "<group>"; };
+		2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureRenderer.swift; sourceTree = "<group>"; };
+		2786D8161C07B26800A1874D /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumesTableViewController.swift; sourceTree = "<group>"; };
+		2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
+		2786D8561C07B86D00A1874D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2786D8581C07B97D00A1874D /* ScripturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScripturesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +133,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2786D8571C07B86D00A1874D /* MapKit.framework in Frameworks */,
+				2786D84F1C07B29800A1874D /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +144,7 @@
 		2786D7E41C07B06F00A1874D = {
 			isa = PBXGroup;
 			children = (
+				2786D8561C07B86D00A1874D /* MapKit.framework */,
 				2786D7EF1C07B06F00A1874D /* Scripture Map */,
 				2786D7EE1C07B06F00A1874D /* Products */,
 			);
@@ -56,15 +161,72 @@
 		2786D7EF1C07B06F00A1874D /* Scripture Map */ = {
 			isa = PBXGroup;
 			children = (
-				2786D7F01C07B06F00A1874D /* AppDelegate.swift */,
-				2786D7F21C07B06F00A1874D /* MasterViewController.swift */,
-				2786D7F41C07B06F00A1874D /* DetailViewController.swift */,
-				2786D7F61C07B06F00A1874D /* Main.storyboard */,
-				2786D7F91C07B06F00A1874D /* Assets.xcassets */,
-				2786D7FB1C07B06F00A1874D /* LaunchScreen.storyboard */,
-				2786D7FE1C07B06F00A1874D /* Info.plist */,
+				2786D8071C07B0F300A1874D /* Model */,
+				2786D8061C07B0F000A1874D /* View */,
+				2786D8051C07B0E900A1874D /* Controller */,
+				2786D8041C07B0DD00A1874D /* Assets */,
 			);
 			path = "Scripture Map";
+			sourceTree = "<group>";
+		};
+		2786D8041C07B0DD00A1874D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2786D8161C07B26800A1874D /* SQLite.xcodeproj */,
+				2786D8091C07B1B900A1874D /* geo.21.sqlite */,
+				2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */,
+				2786D80D1C07B1B900A1874D /* scripture.css */,
+				2786D7F91C07B06F00A1874D /* Assets.xcassets */,
+				2786D7FE1C07B06F00A1874D /* Info.plist */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		2786D8051C07B0E900A1874D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2786D7F01C07B06F00A1874D /* AppDelegate.swift */,
+				2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */,
+				2786D7F41C07B06F00A1874D /* DetailViewController.swift */,
+				2786D8581C07B97D00A1874D /* ScripturesViewController.swift */,
+				2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2786D8061C07B0F000A1874D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2786D7FB1C07B06F00A1874D /* LaunchScreen.storyboard */,
+				2786D7F61C07B06F00A1874D /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2786D8071C07B0F300A1874D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2786D8081C07B1B900A1874D /* Book.swift */,
+				2786D80A1C07B1B900A1874D /* GeoDatabase.swift */,
+				2786D80B1C07B1B900A1874D /* GeoPlace.swift */,
+				2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2786D8331C07B26D00A1874D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2786D83E1C07B26D00A1874D /* SQLite.framework */,
+				2786D8401C07B26D00A1874D /* SQLite iOS Tests.xctest */,
+				2786D8421C07B26D00A1874D /* SQLite.framework */,
+				2786D8441C07B26D00A1874D /* SQLite Mac Tests.xctest */,
+				2786D8461C07B26D00A1874D /* SQLiteCipher.framework */,
+				2786D8481C07B26D00A1874D /* SQLiteCipher iOS Tests.xctest */,
+				2786D84A1C07B26D00A1874D /* SQLiteCipher.framework */,
+				2786D84C1C07B26D00A1874D /* SQLiteCipher Mac Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,10 +239,12 @@
 				2786D7E91C07B06F00A1874D /* Sources */,
 				2786D7EA1C07B06F00A1874D /* Frameworks */,
 				2786D7EB1C07B06F00A1874D /* Resources */,
+				2786D8501C07B2AB00A1874D /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2786D84E1C07B28B00A1874D /* PBXTargetDependency */,
 			);
 			name = "Scripture Map";
 			productName = "Scripture Map";
@@ -113,6 +277,12 @@
 			mainGroup = 2786D7E41C07B06F00A1874D;
 			productRefGroup = 2786D7EE1C07B06F00A1874D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2786D8331C07B26D00A1874D /* Products */;
+					ProjectRef = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2786D7EC1C07B06F00A1874D /* Scripture Map */,
@@ -120,12 +290,74 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		2786D83E1C07B26D00A1874D /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 2786D83D1C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2786D8401C07B26D00A1874D /* SQLite iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLite iOS Tests.xctest";
+			remoteRef = 2786D83F1C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2786D8421C07B26D00A1874D /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 2786D8411C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2786D8441C07B26D00A1874D /* SQLite Mac Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLite Mac Tests.xctest";
+			remoteRef = 2786D8431C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2786D8461C07B26D00A1874D /* SQLiteCipher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLiteCipher.framework;
+			remoteRef = 2786D8451C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2786D8481C07B26D00A1874D /* SQLiteCipher iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteCipher iOS Tests.xctest";
+			remoteRef = 2786D8471C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2786D84A1C07B26D00A1874D /* SQLiteCipher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLiteCipher.framework;
+			remoteRef = 2786D8491C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2786D84C1C07B26D00A1874D /* SQLiteCipher Mac Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteCipher Mac Tests.xctest";
+			remoteRef = 2786D84B1C07B26D00A1874D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		2786D7EB1C07B06F00A1874D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2786D7FD1C07B06F00A1874D /* LaunchScreen.storyboard in Resources */,
+				2786D8141C07B1B900A1874D /* scripture.css in Resources */,
+				2786D8131C07B1B900A1874D /* MapScripturesIcon.psd in Resources */,
+				2786D8101C07B1B900A1874D /* geo.21.sqlite in Resources */,
 				2786D7FA1C07B06F00A1874D /* Assets.xcassets in Resources */,
 				2786D7F81C07B06F00A1874D /* Main.storyboard in Resources */,
 			);
@@ -138,13 +370,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2786D80F1C07B1B900A1874D /* Book.swift in Sources */,
+				2786D8111C07B1B900A1874D /* GeoDatabase.swift in Sources */,
+				2786D8531C07B3E300A1874D /* VolumesTableViewController.swift in Sources */,
 				2786D7F51C07B06F00A1874D /* DetailViewController.swift in Sources */,
-				2786D7F31C07B06F00A1874D /* MasterViewController.swift in Sources */,
+				2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */,
+				2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */,
+				2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */,
+				2786D8121C07B1B900A1874D /* GeoPlace.swift in Sources */,
 				2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2786D84E1C07B28B00A1874D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SQLite iOS";
+			targetProxy = 2786D84D1C07B28B00A1874D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2786D7F61C07B06F00A1874D /* Main.storyboard */ = {

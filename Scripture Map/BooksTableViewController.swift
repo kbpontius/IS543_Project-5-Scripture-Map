@@ -10,16 +10,17 @@ import UIKit
 
 class BooksTableViewController: UITableViewController {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     var books:[Book]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
+        
+        setupTableView()
     }
     
-    // MARK: - Table view data source
+    // MARK: - TABLEVIEW DATASOURCE
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
@@ -32,6 +33,11 @@ class BooksTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - SETUP
+    
+    private func setupTableView() {
+        tableView.delegate = self
+    }
     // MARK: - NAVIGATION
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

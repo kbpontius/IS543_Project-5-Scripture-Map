@@ -61,8 +61,8 @@ class MapViewController: UIViewController {
             mapView.removeAnnotations(mapView.annotations)
             setMapTitle("Default Location")
             
-            let camera = MKMapCamera(lookingAtCenterCoordinate: location!.coordinate, fromEyeCoordinate: location!.coordinate, eyeAltitude: altitude)
-            mapView.setCamera(camera, animated: animate)
+            let pin = GeoPin(coordinate: location!.coordinate, title: "")
+            setCamera(pin)
         }
     }
     
@@ -81,11 +81,12 @@ class MapViewController: UIViewController {
     private func setAnnotations(annotations: [GeoPin], animate: Bool = true) {
         if annotations.count == 1 {
             setCamera(annotations.first!)
+        } else if annotations.count > 1 {
+            mapView.showAnnotations(annotations, animated: animate)
         }
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
             if annotations.count > 1 {
-                self.mapView.showAnnotations(annotations, animated: animate)
                 self.mapView.removeAnnotations(self.mapView.annotations)
                 self.mapView.addAnnotations(annotations)
             } else {
@@ -135,6 +136,7 @@ class MapViewController: UIViewController {
     }
 }
 
+// MARK: - MAPVIEW DELEGATE
 extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         var view = mapView.dequeueReusableAnnotationViewWithIdentifier("Pin")
@@ -154,6 +156,7 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
+// MARK: - LOCATION MANAGER DELEGATE
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         evaluateLocationAuthorizationStatus()

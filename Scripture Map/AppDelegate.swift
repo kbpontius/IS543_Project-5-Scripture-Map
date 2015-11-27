@@ -11,10 +11,10 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     var window: UIWindow?
 
-    // MARK: - Lifecycle
+    // MARK: - LIFECYCLE
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return true
     }
 
-    // MARK: - Split view
+    // MARK: - SPLITVIEW
 
     func splitViewController(splitViewController: UISplitViewController,
         collapseSecondaryViewController secondaryViewController:UIViewController,

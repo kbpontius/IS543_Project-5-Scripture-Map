@@ -10,7 +10,7 @@ import UIKit
 
 class VolumesTableViewController: UITableViewController {
 
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     var volumes = GeoDatabase.sharedGeoDatabase.volumes()
     
@@ -18,7 +18,7 @@ class VolumesTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
-    // MARK: - Table view data source
+    // MARK: - TABLEVIEW DATASOURCE
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return volumes.count
@@ -31,14 +31,14 @@ class VolumesTableViewController: UITableViewController {
         return cell
     }
 
-    // MARK: - Navigation
+    // MARK: - NAVIGATION
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowBooks" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                if let destinaitonTVC = segue.destinationViewController as? BooksTableViewController {
-                    destinaitonTVC.books = GeoDatabase.sharedGeoDatabase.booksForParentId(indexPath.row + 1)
-                    destinaitonTVC.title = volumes[indexPath.row]
+                if let destinationTVC = segue.destinationViewController as? BooksTableViewController {
+                    destinationTVC.books = GeoDatabase.sharedGeoDatabase.booksForParentId(indexPath.row + 1)
+                    destinationTVC.title = volumes[indexPath.row]
                 }
             }
         }

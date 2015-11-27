@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2748452C1C086FBA00054395 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748452B1C086FBA00054395 /* MessageViewController.swift */; };
 		275187C71C082B3F00D01D16 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; };
 		275187C81C082B3F00D01D16 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F01C07B06F00A1874D /* AppDelegate.swift */; };
@@ -111,6 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2748452B1C086FBA00054395 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		2786D7ED1C07B06F00A1874D /* Scripture Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scripture Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2786D7F01C07B06F00A1874D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2786D7F41C07B06F00A1874D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */,
 				2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */,
 				2786D7F41C07B06F00A1874D /* MapViewController.swift */,
+				2748452B1C086FBA00054395 /* MessageViewController.swift */,
 				2786D8581C07B97D00A1874D /* ScripturesViewController.swift */,
 				2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */,
 			);
@@ -381,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2786D80F1C07B1B900A1874D /* Book.swift in Sources */,
+				2748452C1C086FBA00054395 /* MessageViewController.swift in Sources */,
 				2786D8111C07B1B900A1874D /* GeoDatabase.swift in Sources */,
 				2786D8531C07B3E300A1874D /* VolumesTableViewController.swift in Sources */,
 				2786D7F51C07B06F00A1874D /* MapViewController.swift in Sources */,

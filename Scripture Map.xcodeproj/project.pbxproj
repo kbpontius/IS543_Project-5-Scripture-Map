@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		275187C71C082B3F00D01D16 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; };
+		275187C81C082B3F00D01D16 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F01C07B06F00A1874D /* AppDelegate.swift */; };
 		2786D7F51C07B06F00A1874D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F41C07B06F00A1874D /* MapViewController.swift */; };
 		2786D7F81C07B06F00A1874D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2786D7F61C07B06F00A1874D /* Main.storyboard */; };
@@ -19,8 +21,6 @@
 		2786D8131C07B1B900A1874D /* MapScripturesIcon.psd in Resources */ = {isa = PBXBuildFile; fileRef = 2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */; };
 		2786D8141C07B1B900A1874D /* scripture.css in Resources */ = {isa = PBXBuildFile; fileRef = 2786D80D1C07B1B900A1874D /* scripture.css */; };
 		2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */; };
-		2786D84F1C07B29800A1874D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; };
-		2786D8511C07B2B300A1874D /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2786D83E1C07B26D00A1874D /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2786D8531C07B3E300A1874D /* VolumesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */; };
 		2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */; };
 		2786D8571C07B86D00A1874D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D8561C07B86D00A1874D /* MapKit.framework */; };
@@ -30,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		275187C91C082B3F00D01D16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DC2B29E11B26F718001C60EA;
+			remoteInfo = "SQLite iOS";
+		};
 		2786D83D1C07B26D00A1874D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
@@ -86,24 +93,18 @@
 			remoteGlobalIDString = DCE7BBB91B7438620040D364;
 			remoteInfo = "SQLiteCipher Mac Tests";
 		};
-		2786D84D1C07B28B00A1874D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2786D8161C07B26800A1874D /* SQLite.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DC2B29E11B26F718001C60EA;
-			remoteInfo = "SQLite iOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2786D8501C07B2AB00A1874D /* CopyFiles */ = {
+		275187CB1C082B4000D01D16 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 10;
 			files = (
-				2786D8511C07B2B300A1874D /* SQLite.framework in CopyFiles */,
+				275187C81C082B3F00D01D16 /* SQLite.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -137,8 +138,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275187C71C082B3F00D01D16 /* SQLite.framework in Frameworks */,
 				2786D8571C07B86D00A1874D /* MapKit.framework in Frameworks */,
-				2786D84F1C07B29800A1874D /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +181,8 @@
 				2786D8091C07B1B900A1874D /* geo.21.sqlite */,
 				2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */,
 				2786D80D1C07B1B900A1874D /* scripture.css */,
-				2786D7F91C07B06F00A1874D /* Assets.xcassets */,
 				2786D7FE1C07B06F00A1874D /* Info.plist */,
+				2786D7F91C07B06F00A1874D /* Assets.xcassets */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -245,12 +246,12 @@
 				2786D7E91C07B06F00A1874D /* Sources */,
 				2786D7EA1C07B06F00A1874D /* Frameworks */,
 				2786D7EB1C07B06F00A1874D /* Resources */,
-				2786D8501C07B2AB00A1874D /* CopyFiles */,
+				275187CB1C082B4000D01D16 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2786D84E1C07B28B00A1874D /* PBXTargetDependency */,
+				275187CA1C082B3F00D01D16 /* PBXTargetDependency */,
 			);
 			name = "Scripture Map";
 			productName = "Scripture Map";
@@ -393,10 +394,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2786D84E1C07B28B00A1874D /* PBXTargetDependency */ = {
+		275187CA1C082B3F00D01D16 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SQLite iOS";
-			targetProxy = 2786D84D1C07B28B00A1874D /* PBXContainerItemProxy */;
+			targetProxy = 275187C91C082B3F00D01D16 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -507,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Scripture Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylepontius.Scripture-Map";
@@ -518,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Scripture Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylepontius.Scripture-Map";

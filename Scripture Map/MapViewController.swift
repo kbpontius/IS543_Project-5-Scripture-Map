@@ -8,35 +8,46 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
+    var manager = CLLocationManager()
+    // Default is the LDS Conference Center
+    var displayDefaultLocation = true
+    
+    // MARK: - OUTLETS
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         setupMapView()
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2DMake(40.2506, -111.65247)
-            annotation.title = "Tanner Building"
-            annotation.subtitle = "BYU Campus"
-            
-            self.mapView.addAnnotation(annotation)
-        }
-        
-        let camera = MKMapCamera(lookingAtCenterCoordinate: CLLocationCoordinate2DMake(40.2506  , -111.65247), fromEyeCoordinate: CLLocationCoordinate2DMake(40.2406, -111.65247), eyeAltitude: 300)
-        
-        mapView.setCamera(camera, animated: true)
     }
     
     // MARK: - SETUP METHODS
     
     private func setupMapView() {
         mapView.delegate = self
+        manager.delegate = self
+        manager.distanceFilter = kCLDistanceFilterNone
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        evaluateLocationAuthorizationStatus()
+    }
+    
+    private func goToLocationOnMap(annotation: MKPointAnnotation? = nil,
+        altitude: Double = 1000, location: CLLocation = CLLocation(latitude: 40.7725, longitude: -111.8925)) {
+            
+        if annotation != nil {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+                self.mapView.addAnnotation(annotation!)
+            }
+        }
+
+        let camera = MKMapCamera(lookingAtCenterCoordinate: location.coordinate, fromEyeCoordinate: location.coordinate, eyeAltitude: altitude)
+        mapView.setCamera(camera, animated: true)
     }
 }
 
@@ -48,7 +59,7 @@ extension MapViewController: MKMapViewDelegate {
             let pinView = MKPinAnnotationView()
             pinView.animatesDrop = true
             pinView.canShowCallout = true
-            pinView.pinTintColor = UIColor.blueColor() // MKPinAnnotationView.purplePinColor()
+            pinView.pinTintColor = UIColor.blueColor()
             
             view = pinView
         } else {
@@ -56,5 +67,26 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         return view
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        evaluateLocationAuthorizationStatus()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        manager.stopUpdatingLocation()
+        goToLocationOnMap(location: newLocation)
+    }
+    
+    private func evaluateLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            manager.requestWhenInUseAuthorization()
+        } else if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
+            goToLocationOnMap()
+        } else {
+            manager.startUpdatingLocation()
+        }
     }
 }

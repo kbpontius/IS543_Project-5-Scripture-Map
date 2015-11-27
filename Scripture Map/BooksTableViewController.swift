@@ -32,23 +32,31 @@ class BooksTableViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - Navigation
+    // MARK: - NAVIGATION
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowScripture" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                if let destinationVC = segue.destinationViewController as? ScripturesViewController {
-                    destinationVC.book = books[indexPath.row]
-                    destinationVC.chapter = 1
-                    destinationVC.title = books[indexPath.row].fullName
-                }
+        if let indexPath = tableView.indexPathForSelectedRow {
+            if segue.identifier == "ShowScripture" {
+                
+            } else if segue.identifier == "ShowChapters" {
+                
             }
         }
     }
     
-    // MARK: - TableView Delegate Methods
+    // MARK: - HELPER
+    
+    private func hasOnlyOneChapter(book: Book) -> Bool {
+        return book.numChapters > 1
+    }
+    
+    // MARK: - TABLEVIEW DELEGATE
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("ShowScripture", sender: self)
+        if hasOnlyOneChapter(books[indexPath.row]) {
+            performSegueWithIdentifier("ShowScripture", sender: self)
+        } else {
+            performSegueWithIdentifier("ShowChapters", sender: self)
+        }
     }
 }

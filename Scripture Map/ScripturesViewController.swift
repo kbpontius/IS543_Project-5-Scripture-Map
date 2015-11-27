@@ -16,20 +16,78 @@ class ScripturesViewController: UIViewController {
     var book: Book!
     var chapter = -1
     
+    weak var mapViewController: MapViewController?
+    
     // MARK: - Outlets
     
     @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configureDetailVC()
+        setupWebView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        configureDetailVC()
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func configureDetailVC() {
+        if let splitVC = splitViewController {
+            mapViewController = (splitVC.viewControllers.last as! UINavigationController).topViewController as? MapViewController
+        } else {
+            mapViewController = nil
+        }
+    }
+    
+    private func setupWebView() {
+        webView.delegate = self
+        
         let html = ScriptureRenderer.sharedRenderer.htmlForBookId(book.id, chapter: chapter)
         webView.loadHTMLString(html, baseURL: nil)
     }
     
     // MARK: - Navigation
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowMap" {
+            if let navigationVC = segue.destinationViewController as? UINavigationController {
+                if let mapVC = navigationVC.topViewController as? MapViewController {
+                    // TODO: configure the map view according
+                    
+                    mapVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+                    mapVC.navigationItem.leftItemsSupplementBackButton = true
+                }
+            }
+        }
+    }
+}
+
+// MARK: - WebView Delegate
+extension ScripturesViewController: UIWebViewDelegate {
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
+        if let path = request.URL?.absoluteString {
+            let defaultPath = "http://scriptures.byu.edu/mapscrip/"
+            if path.hasPrefix(defaultPath) {
+                let index = path.startIndex.advancedBy(defaultPath.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+                let geoplaceId = path.substringFromIndex(index)
+                
+                print("Requested Location: \(geoplaceId)")
+                
+                if mapViewController == nil {
+                    performSegueWithIdentifier("ShowMap", sender: self)
+                } else {
+                    // TODO: adjust the map view to show the requested geoplace
+                }
+                
+                return false
+            }
+        }
+        
+        return true
     }
 }

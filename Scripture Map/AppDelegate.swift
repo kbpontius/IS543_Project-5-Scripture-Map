@@ -11,15 +11,18 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
+    // MARK: - Properties
     var window: UIWindow?
 
-
+    // MARK: - Lifecycle
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        let navigationController = splitViewController.viewControllers.last as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         splitViewController.delegate = self
+        
         return true
     }
 
@@ -47,15 +50,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     // MARK: - Split view
 
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+    func splitViewController(splitViewController: UISplitViewController,
+        collapseSecondaryViewController secondaryViewController:UIViewController,
+        ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+        
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
-        if topAsDetailController.detailItem == nil {
-            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-            return true
-        }
+        guard let _ = secondaryAsNavController.topViewController as? MapViewController else { return false }
+        
         return false
     }
-
+    
+    func splitViewController(splitViewController: UISplitViewController,
+        separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController) -> UIViewController? {
+        
+            if let navigationVC = primaryViewController as? UINavigationController {
+                for controller in navigationVC.viewControllers {
+                    if let controllerVC = controller as? UINavigationController {
+                        // This is the default detail view controller.
+                        return controllerVC
+                    }
+                }
+            }
+    
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let detailView = storyboard.instantiateViewControllerWithIdentifier("detailVC") as! UINavigationController
+            
+            // Enable back button.
+            if let controller = detailView.visibleViewController {
+                controller.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+            
+            return detailView
+    }
 }
 

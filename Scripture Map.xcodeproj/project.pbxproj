@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F01C07B06F00A1874D /* AppDelegate.swift */; };
-		2786D7F51C07B06F00A1874D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F41C07B06F00A1874D /* DetailViewController.swift */; };
+		2786D7F51C07B06F00A1874D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D7F41C07B06F00A1874D /* MapViewController.swift */; };
 		2786D7F81C07B06F00A1874D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2786D7F61C07B06F00A1874D /* Main.storyboard */; };
 		2786D7FA1C07B06F00A1874D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2786D7F91C07B06F00A1874D /* Assets.xcassets */; };
 		2786D7FD1C07B06F00A1874D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2786D7FB1C07B06F00A1874D /* LaunchScreen.storyboard */; };
@@ -25,6 +25,7 @@
 		2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */; };
 		2786D8571C07B86D00A1874D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D8561C07B86D00A1874D /* MapKit.framework */; };
 		2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8581C07B97D00A1874D /* ScripturesViewController.swift */; };
+		2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +110,7 @@
 /* Begin PBXFileReference section */
 		2786D7ED1C07B06F00A1874D /* Scripture Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scripture Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2786D7F01C07B06F00A1874D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2786D7F41C07B06F00A1874D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2786D7F41C07B06F00A1874D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2786D7F71C07B06F00A1874D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2786D7F91C07B06F00A1874D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2786D7FC1C07B06F00A1874D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 		2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
 		2786D8561C07B86D00A1874D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2786D8581C07B97D00A1874D /* ScripturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScripturesViewController.swift; sourceTree = "<group>"; };
+		2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +189,8 @@
 			children = (
 				2786D7F01C07B06F00A1874D /* AppDelegate.swift */,
 				2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */,
-				2786D7F41C07B06F00A1874D /* DetailViewController.swift */,
+				2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */,
+				2786D7F41C07B06F00A1874D /* MapViewController.swift */,
 				2786D8581C07B97D00A1874D /* ScripturesViewController.swift */,
 				2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */,
 			);
@@ -373,10 +376,11 @@
 				2786D80F1C07B1B900A1874D /* Book.swift in Sources */,
 				2786D8111C07B1B900A1874D /* GeoDatabase.swift in Sources */,
 				2786D8531C07B3E300A1874D /* VolumesTableViewController.swift in Sources */,
-				2786D7F51C07B06F00A1874D /* DetailViewController.swift in Sources */,
+				2786D7F51C07B06F00A1874D /* MapViewController.swift in Sources */,
 				2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */,
 				2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */,
 				2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */,
+				2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */,
 				2786D8121C07B1B900A1874D /* GeoPlace.swift in Sources */,
 				2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */,
 			);

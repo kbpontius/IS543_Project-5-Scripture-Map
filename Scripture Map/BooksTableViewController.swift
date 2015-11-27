@@ -36,11 +36,17 @@ class BooksTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indexPath = tableView.indexPathForSelectedRow {
+            let currentBook = books[indexPath.row]
+            
             if segue.identifier == "ShowScripture" {
-                
+                if let destinationVC = segue.destinationViewController as? ScripturesViewController {
+                    destinationVC.book = currentBook
+                    destinationVC.chapter = 1
+                }
             } else if segue.identifier == "ShowChapters" {
                 if let destinationVC = segue.destinationViewController as? ChaptersTableViewController {
-                    destinationVC.chapters = getChapters(books[indexPath.row])
+                    destinationVC.book = currentBook
+                    destinationVC.chapters = getChapters(currentBook)
                 }
             }
         }
@@ -52,9 +58,9 @@ class BooksTableViewController: UITableViewController {
         return book.numChapters < 2
     }
     
-    private func getChapters(book: Book) -> [String] {
+    private func getChapters(book: Book) -> [Chapter] {
         let result = GeoDatabase.sharedGeoDatabase.chaptersForBook(book)
-        return result.map { String($0.chapter) }
+        return result
     }
     
     // MARK: - TABLEVIEW DELEGATE

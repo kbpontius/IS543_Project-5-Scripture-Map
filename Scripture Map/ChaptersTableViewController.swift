@@ -12,17 +12,35 @@ class ChaptersTableViewController: UITableViewController {
     
     // MARK: - PROPERTIES
     
-    var chapters:[String]!
+    var book:Book!
+    var chapters:[Chapter]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: - NAVIGATION
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowScripture" {
+            if let destinationVC = segue.destinationViewController as? ScripturesViewController {
+                destinationVC.book = book
+                destinationVC.chapter = chapters[tableView.indexPathForSelectedRow!.row].chapter
+            }
+        }
+    }
+    
+    // MARK: - TABLEVIEW DELEGATE
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ShowScripture", sender: self)
     }
 
     // MARK: - TABLEVIEW DATASOURCE
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = chapters[indexPath.row]
+        cell.textLabel?.text = String(chapters[indexPath.row].chapter)
         
         return cell
     }

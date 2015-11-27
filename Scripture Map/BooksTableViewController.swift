@@ -39,7 +39,9 @@ class BooksTableViewController: UITableViewController {
             if segue.identifier == "ShowScripture" {
                 
             } else if segue.identifier == "ShowChapters" {
-                
+                if let destinationVC = segue.destinationViewController as? ChaptersTableViewController {
+                    destinationVC.chapters = getChapters(books[indexPath.row])
+                }
             }
         }
     }
@@ -47,7 +49,12 @@ class BooksTableViewController: UITableViewController {
     // MARK: - HELPER
     
     private func hasOnlyOneChapter(book: Book) -> Bool {
-        return book.numChapters > 1
+        return book.numChapters < 2
+    }
+    
+    private func getChapters(book: Book) -> [String] {
+        let result = GeoDatabase.sharedGeoDatabase.chaptersForBook(book)
+        return result.map { String($0.chapter) }
     }
     
     // MARK: - TABLEVIEW DELEGATE

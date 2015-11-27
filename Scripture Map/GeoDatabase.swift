@@ -152,4 +152,20 @@ class GeoDatabase {
 
         return ["Old Testament", "New Testament", "Book of Mormon", "Doctrine and Covenants", "Pearl of Great Price"]
     }
+    
+    func chaptersForBook(book: Book) -> [Chapter] {
+        var chapters = [Chapter]()
+        var chapterCheckSet = Set<Int>()
+        
+        for chapterRecord in db.prepare(gScriptureTable.filter(gScriptureBookId == book.id).order(gScriptureChapter)) {
+            let chapter = Chapter(fromRow: chapterRecord)
+            
+            if !chapterCheckSet.contains(chapter.chapter) {
+                chapterCheckSet.insert(chapter.chapter)
+                chapters.append(chapter)
+            }
+        }
+        
+        return chapters
+    }
 }

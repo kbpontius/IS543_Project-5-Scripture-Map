@@ -26,6 +26,7 @@
 		2786D8571C07B86D00A1874D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D8561C07B86D00A1874D /* MapKit.framework */; };
 		2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8581C07B97D00A1874D /* ScripturesViewController.swift */; };
 		2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */; };
+		2786D85D1C0806C000A1874D /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D85C1C0806C000A1874D /* Chapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		2786D8561C07B86D00A1874D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2786D8581C07B97D00A1874D /* ScripturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScripturesViewController.swift; sourceTree = "<group>"; };
 		2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersTableViewController.swift; sourceTree = "<group>"; };
+		2786D85C1C0806C000A1874D /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				2786D8081C07B1B900A1874D /* Book.swift */,
+				2786D85C1C0806C000A1874D /* Chapter.swift */,
 				2786D80A1C07B1B900A1874D /* GeoDatabase.swift */,
 				2786D80B1C07B1B900A1874D /* GeoPlace.swift */,
 				2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */,
@@ -383,6 +386,7 @@
 				2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */,
 				2786D8121C07B1B900A1874D /* GeoPlace.swift in Sources */,
 				2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */,
+				2786D85D1C0806C000A1874D /* Chapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +544,7 @@
 				2786D8031C07B06F00A1874D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

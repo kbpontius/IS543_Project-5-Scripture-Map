@@ -122,24 +122,21 @@
         <scene sceneID="QHb-Lt-EQt">
             <objects>
                 <tableViewController title="Scriptures" id="3gH-7h-5Hn" customClass="BooksTableViewController" customModule="Scripture_Map" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="FfY-5c-RLl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FfY-5c-RLl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" id="IfO-rG-2bX">
-                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IfO-rG-2bX" id="wHx-SG-TxM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <connections>
-                                    <segue destination="h5s-Eq-qwf" kind="show" identifier="ShowChapters" id="2SR-d0-6Wk"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -149,23 +146,24 @@
                     </tableView>
                     <connections>
                         <segue destination="Y97-KW-bqa" kind="show" identifier="ShowScripture" id="7Wz-Yp-wCZ"/>
+                        <segue destination="h5s-Eq-qwf" kind="show" identifier="ShowChapters" id="f4I-Mg-yoy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxe-Du-EPk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1444" y="-630"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Chapters Table View Controller-->
         <scene sceneID="UlQ-ZD-Cyb">
             <objects>
-                <tableViewController id="h5s-Eq-qwf" sceneMemberID="viewController">
+                <tableViewController id="h5s-Eq-qwf" customClass="ChaptersTableViewController" customModule="Scripture_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kTN-S0-djh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rZt-Xl-yNn">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="rZt-Xl-yNn">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rZt-Xl-yNn" id="6vO-br-IrM">
@@ -244,7 +242,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YQY-uo-Q8e"/>
         <segue reference="FHX-vR-a2h"/>
+        <segue reference="7Wz-Yp-wCZ"/>
     </inferredMetricsTieBreakers>
 </document>

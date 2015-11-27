@@ -143,6 +143,8 @@ class GeoDatabase {
         var dbRows = Array(db.prepare(gScriptureTable.filter(gScriptureBookId == bookId &&
             gScriptureChapter == chapter).order(gScriptureVerse)))
         
+        // FIXED: There seemed to be an issue with books who only had one verse, and the chapter
+        // was 0 instead of 1, like all other books. Therefore, 0 is the value when no rows are returned.
         if dbRows.count == 0 {
             dbRows = Array(db.prepare(gScriptureTable.filter(gScriptureBookId == bookId &&
                 gScriptureChapter == 0).order(gScriptureVerse)))

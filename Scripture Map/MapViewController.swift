@@ -44,7 +44,11 @@ class MapViewController: UIViewController {
         manager.distanceFilter = kCLDistanceFilterNone
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
-        evaluateLocationAuthorizationStatus()
+        if geoLocations?.count > 0 {
+            setAnnotations(getAnnotations(geoLocations))
+        } else {
+            evaluateLocationAuthorizationStatus()
+        }
     }
     
     private func goToLocationOnMap(altitude: Double = 1000, location: CLLocation?, animate: Bool = true) {
@@ -55,6 +59,7 @@ class MapViewController: UIViewController {
         } else {
             // Default location is SLC if user's location is unknown.
             mapView.removeAnnotations(mapView.annotations)
+            setMapTitle("Default Location")
             
             let camera = MKMapCamera(lookingAtCenterCoordinate: location!.coordinate, fromEyeCoordinate: location!.coordinate, eyeAltitude: altitude)
             mapView.setCamera(camera, animated: animate)
@@ -62,6 +67,10 @@ class MapViewController: UIViewController {
     }
     
     // MARK: - HELPER METHODS
+    
+    private func setMapTitle(title: String) {
+        self.navigationItem.title = title
+    }
     
     private func setCamera(geoPin: GeoPin, animated: Bool = true) {
         let camera = MKMapCamera(lookingAtCenterCoordinate: geoPin.coordinate, fromEyeCoordinate: geoPin.viewCoordinate!, eyeAltitude: geoPin.altitude)
@@ -82,6 +91,8 @@ class MapViewController: UIViewController {
             } else {
                 self.mapView.removeAnnotations(self.mapView.annotations)
                 self.mapView.addAnnotation(annotations.first!)
+                self.mapView.selectAnnotation(annotations.first!, animated: true)
+                self.setMapTitle(annotations.first!.title ?? "")
             }
         }
     }
@@ -90,15 +101,33 @@ class MapViewController: UIViewController {
         var annotations = [GeoPin]()
         
         for location in geoLocations {
-            let geoPin = GeoPin(place: location)
-            annotations.append(geoPin)
+            let pin = GeoPin(place: location)
+            var alreadyIncluded = false
+            
+            // This loop prevents duplicate annotations from being added
+            if annotations.count > 0 {
+                for annotation in annotations {
+                    if pin.coordinate.latitude == annotation.coordinate.latitude
+                        && pin.coordinate.longitude == annotation.coordinate.longitude {
+                            alreadyIncluded = true
+                            break
+                    }
+                }
+                
+                if !alreadyIncluded {
+                    annotations.append(pin)
+                }
+            } else {
+                annotations.append(pin)
+            }
         }
         
+        // This ensures a location is always available to go to
         if annotations.count < 1 {
             resetDefaultLocation()
         }
         
-        return annotations
+        return Array(annotations)
     }
     
     private func resetDefaultLocation() {

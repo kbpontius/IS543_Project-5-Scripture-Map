@@ -49,6 +49,11 @@ class ScripturesViewController: UIViewController {
         let html = ScriptureRenderer.sharedRenderer.htmlForBookId(book.id, chapter: chapter)
         webView.loadHTMLString(html, baseURL: nil)
         mapViewController?.updateLocations(ScriptureRenderer.sharedRenderer.collectedGeocodedPlaces)
+        mapViewController?.navigationItem.title = getMapTitle()
+    }
+    
+    private func getMapTitle() -> String {
+        return "\(book.fullName) \(chapter)"
     }
     
     // MARK: - Navigation
@@ -57,7 +62,10 @@ class ScripturesViewController: UIViewController {
         if segue.identifier == "ShowMap" {
             if let navigationVC = segue.destinationViewController as? UINavigationController {
                 if let mapVC = navigationVC.topViewController as? MapViewController {
-                    mapVC.geoLocations = ScriptureRenderer.sharedRenderer.collectedGeocodedPlaces
+                    let geoPlace = sender as? GeoPlace
+                    let locations = geoPlace != nil ? [geoPlace!] : ScriptureRenderer.sharedRenderer.collectedGeocodedPlaces
+                    mapVC.geoLocations = locations
+                    mapVC.navigationItem.title = getMapTitle()
                     mapVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                     mapVC.navigationItem.leftItemsSupplementBackButton = true
                 }
@@ -76,9 +84,8 @@ extension ScripturesViewController: UIWebViewDelegate {
                 let geoplaceId = path.substringFromIndex(index)
                 
                 if mapViewController == nil {
-                    performSegueWithIdentifier("ShowMap", sender: self)
+                    performSegueWithIdentifier("ShowMap", sender: GeoDatabase.sharedGeoDatabase.geoPlaceForId(Int(geoplaceId)!)!)
                 } else {
-                    // TODO: Get location of geoplaceId!!
                     mapViewController!.updateLocations([GeoDatabase.sharedGeoDatabase.geoPlaceForId(Int(geoplaceId)!)!], animate: false)
                 }
                 

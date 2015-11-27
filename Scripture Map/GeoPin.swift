@@ -9,24 +9,26 @@
 import MapKit
 
 class GeoPin: NSObject, MKAnnotation {
+    
+    // MARK: - PROPERTIES
+    
+    // MARK: Coordinate Properties
     var coordinate: CLLocationCoordinate2D
     var viewCoordinate: CLLocationCoordinate2D?
     
+    // MARK: Viewing Properties
     var altitude: Double = 5000
     var tiltAngle: Double = 0
     var heading: Double = 0
-    
     var title: String?
-    var subtitle: String?
     
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
+    init(coordinate: CLLocationCoordinate2D, title: String) {
         self.coordinate = coordinate
         self.title = title
-        self.subtitle = subtitle
     }
     
     convenience init(place: GeoPlace) {
-        self.init(coordinate: CLLocationCoordinate2DMake(place.latitude, place.longitude), title: place.placename, subtitle: "FIX ME")
+        self.init(coordinate: CLLocationCoordinate2DMake(place.latitude, place.longitude), title: place.placename)
         self.viewCoordinate = CLLocationCoordinate2DMake(place.viewLatitude ?? place.latitude, place.viewLongitude ?? place.longitude)
         self.altitude = place.viewAltitude ?? 5000
         self.tiltAngle = place.viewTilt ?? 0

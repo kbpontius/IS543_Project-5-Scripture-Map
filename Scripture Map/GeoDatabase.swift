@@ -140,8 +140,15 @@ class GeoDatabase {
     // Return a query that will generate all verses for a given book ID and chapter.
     //
     func versesForScriptureBookId(bookId: Int, _ chapter: Int) -> Array<Row> {
-        return Array(db.prepare(gScriptureTable.filter(gScriptureBookId == bookId &&
+        var dbRows = Array(db.prepare(gScriptureTable.filter(gScriptureBookId == bookId &&
             gScriptureChapter == chapter).order(gScriptureVerse)))
+        
+        if dbRows.count == 0 {
+            dbRows = Array(db.prepare(gScriptureTable.filter(gScriptureBookId == bookId &&
+                gScriptureChapter == 0).order(gScriptureVerse)))
+        }
+        
+        return dbRows
     }
 
     //

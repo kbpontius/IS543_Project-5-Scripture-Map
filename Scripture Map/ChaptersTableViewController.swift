@@ -99,7 +99,7 @@ extension ChaptersTableViewController: UIViewControllerPreviewingDelegate {
             mapView.navigationItem.leftItemsSupplementBackButton = true
             mapView.displayDefaultLocation = false
             mapView.view.frame = CGRectMake(mapView.view.frame.origin.x, mapView.view.frame.origin.y, peekWidth, peekHeight)
-            mapView.preferredContentSize = CGSize(width: peekWidth, height: peekHeight)
+            mapView.view.layoutIfNeeded()
             
             return mapView
         } else {

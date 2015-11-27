@@ -27,6 +27,7 @@
 		2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8581C07B97D00A1874D /* ScripturesViewController.swift */; };
 		2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */; };
 		2786D85D1C0806C000A1874D /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D85C1C0806C000A1874D /* Chapter.swift */; };
+		27BED1E31C08345C00AF4733 /* GeoPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BED1E21C08345C00AF4733 /* GeoPin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		2786D8581C07B97D00A1874D /* ScripturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScripturesViewController.swift; sourceTree = "<group>"; };
 		2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersTableViewController.swift; sourceTree = "<group>"; };
 		2786D85C1C0806C000A1874D /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		27BED1E21C08345C00AF4733 /* GeoPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				2786D8081C07B1B900A1874D /* Book.swift */,
 				2786D85C1C0806C000A1874D /* Chapter.swift */,
 				2786D80A1C07B1B900A1874D /* GeoDatabase.swift */,
+				27BED1E21C08345C00AF4733 /* GeoPin.swift */,
 				2786D80B1C07B1B900A1874D /* GeoPlace.swift */,
 				2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */,
 			);
@@ -382,6 +385,7 @@
 				2786D8531C07B3E300A1874D /* VolumesTableViewController.swift in Sources */,
 				2786D7F51C07B06F00A1874D /* MapViewController.swift in Sources */,
 				2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */,
+				27BED1E31C08345C00AF4733 /* GeoPin.swift in Sources */,
 				2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */,
 				2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */,
 				2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */,

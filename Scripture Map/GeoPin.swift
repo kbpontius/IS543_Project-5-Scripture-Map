@@ -24,6 +24,7 @@ class GeoPin: NSObject, MKAnnotation {
     
     init(coordinate: CLLocationCoordinate2D, title: String) {
         self.coordinate = coordinate
+        self.viewCoordinate = coordinate
         self.title = title
     }
     

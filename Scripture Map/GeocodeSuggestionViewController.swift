@@ -26,6 +26,7 @@ class GeocodeSuggestionViewController: UIViewController {
     override func viewDidLoad() {
         setupTextFields()
         setupDefaultValues()
+        setupMapView()
     }
     
     // MARK: - SETUP METHODS
@@ -46,6 +47,10 @@ class GeocodeSuggestionViewController: UIViewController {
         txtViewRoll.delegate = self
         txtViewAltitude.delegate = self
         txtViewHeading.delegate = self
+    }
+    
+    private func setupMapView() {
+        mapView.delegate = self
     }
     
     // MARK: - IB ACTIONS
@@ -86,14 +91,19 @@ class GeocodeSuggestionViewController: UIViewController {
         txtViewHeading.text! = String(mapCamera.heading)
     }
     
-    // Normally a great deal of validation would go in here,
-    // however, due to a great lack of available time to work on
-    // this I'm going to just assume that the value passed in is a
-    // double, like it should be. :)
+    /*
+        Normally a great deal of validation would go in here,
+        however, due to a great lack of available time to work on
+        this I'm going to just assume that the value passed in is a
+        double or I'll assign it 0.
+    */
     private func refreshMapViewWithNewTextFieldValues(animated: Bool) {
-        let camera = MKMapCamera(lookingAtCenterCoordinate: CLLocationCoordinate2D(latitude: Double(txtLatitude.text ?? "") ?? 0, longitude: Double(txtLongitude.text ?? "") ?? 0), fromEyeCoordinate: CLLocationCoordinate2D(latitude: Double(txtViewLatitude.text ?? "") ?? 0, longitude: Double(txtViewLongitude.text ?? "") ?? 0), eyeAltitude: Double(txtViewAltitude.text ?? "") ?? 0)
-        
-        mapView.setCamera(camera, animated: animated)
+        // This prevents the default values of 0 being taken before the latitude & longitude are provided.
+        if !txtLatitude.text!.isEmpty && !txtLongitude.text!.isEmpty {
+            let camera = MKMapCamera(lookingAtCenterCoordinate: CLLocationCoordinate2D(latitude: Double(txtLatitude.text ?? "") ?? 0, longitude: Double(txtLongitude.text ?? "") ?? 0), fromEyeCoordinate: CLLocationCoordinate2D(latitude: Double(txtViewLatitude.text ?? "") ?? 0, longitude: Double(txtViewLongitude.text ?? "") ?? 0), eyeAltitude: Double(txtViewAltitude.text ?? "") ?? 0)
+            
+            mapView.setCamera(camera, animated: animated)
+        }
     }
     
     // Just a small bit of validation before evaluating.
@@ -113,9 +123,23 @@ class GeocodeSuggestionViewController: UIViewController {
     }
 }
 
+// MARK: - MKMAPVIEWDELEGATE EXTENSION
+extension GeocodeSuggestionViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        self.view.endEditing(true)
+    }
+}
+
+// MARK: - UITEXTFIELDDELEGATE EXTENSION
 extension GeocodeSuggestionViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         validateTextFields(textField)
         refreshMapViewWithNewTextFieldValues(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        
+        return true
     }
 }

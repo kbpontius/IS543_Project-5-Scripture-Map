@@ -28,6 +28,8 @@
 		2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8581C07B97D00A1874D /* ScripturesViewController.swift */; };
 		2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */; };
 		2786D85D1C0806C000A1874D /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D85C1C0806C000A1874D /* Chapter.swift */; };
+		27B40F5F1C1619FC0081DE88 /* CustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B40F5E1C1619FC0081DE88 /* CustomWebView.swift */; };
+		27B40F681C161ED90081DE88 /* GeocodeSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B40F671C161ED90081DE88 /* GeocodeSuggestionViewController.swift */; };
 		27BED1E31C08345C00AF4733 /* GeoPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BED1E21C08345C00AF4733 /* GeoPin.swift */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +136,8 @@
 		2786D8581C07B97D00A1874D /* ScripturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScripturesViewController.swift; sourceTree = "<group>"; };
 		2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersTableViewController.swift; sourceTree = "<group>"; };
 		2786D85C1C0806C000A1874D /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		27B40F5E1C1619FC0081DE88 /* CustomWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomWebView.swift; sourceTree = "<group>"; };
+		27B40F671C161ED90081DE88 /* GeocodeSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeSuggestionViewController.swift; sourceTree = "<group>"; };
 		27BED1E21C08345C00AF4733 /* GeoPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +201,8 @@
 				2786D7F01C07B06F00A1874D /* AppDelegate.swift */,
 				2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */,
 				2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */,
+				27B40F5E1C1619FC0081DE88 /* CustomWebView.swift */,
+				27B40F671C161ED90081DE88 /* GeocodeSuggestionViewController.swift */,
 				2786D7F41C07B06F00A1874D /* MapViewController.swift */,
 				2748452B1C086FBA00054395 /* MessageViewController.swift */,
 				2786D8581C07B97D00A1874D /* ScripturesViewController.swift */,
@@ -208,8 +214,8 @@
 		2786D8061C07B0F000A1874D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2786D7FB1C07B06F00A1874D /* LaunchScreen.storyboard */,
 				2786D7F61C07B06F00A1874D /* Main.storyboard */,
+				2786D7FB1C07B06F00A1874D /* LaunchScreen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -392,10 +398,12 @@
 				2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */,
 				27BED1E31C08345C00AF4733 /* GeoPin.swift in Sources */,
 				2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */,
+				27B40F681C161ED90081DE88 /* GeocodeSuggestionViewController.swift in Sources */,
 				2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */,
 				2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */,
 				2786D8121C07B1B900A1874D /* GeoPlace.swift in Sources */,
 				2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */,
+				27B40F5F1C1619FC0081DE88 /* CustomWebView.swift in Sources */,
 				2786D85D1C0806C000A1874D /* Chapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

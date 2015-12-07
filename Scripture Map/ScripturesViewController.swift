@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ScripturesViewController: UIViewController {
+class ScripturesViewController: UIViewController, GeocodingSuggestionDelegate {
     
     // MARK: - PROPERTIES
     
@@ -20,7 +20,7 @@ class ScripturesViewController: UIViewController {
     
     // MARK: - OUTLETS
     
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: CustomWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,16 @@ class ScripturesViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         configureDetailVC()
+    }
+    
+    // MARK: - DELEGATE CALLBACK
+    
+    func didSuggestTextToGeocode(text: String) {
+        performSegueWithIdentifier("SegueSuggestGeocode", sender: self)
+    }
+    
+    func didSuggestLocationToGeocode(latitude: Double, longitude: Double, viewLatitude: Double, viewLongitude: Double, viewTilt: Double, viewRoll: Double, viewAltitude: Double, viewHeading: Double) {
+        print(String("\(latitude) , \(longitude)"))
     }
     
     // MARK: - HELPER METHODS
@@ -44,6 +54,7 @@ class ScripturesViewController: UIViewController {
     }
     
     private func setupWebView() {
+        webView.geocodingDelegate = self
         webView.delegate = self
         
         let html = ScriptureRenderer.sharedRenderer.htmlForBookId(book.id, chapter: chapter)
@@ -81,6 +92,16 @@ class ScripturesViewController: UIViewController {
                     mapVC.navigationItem.title = getMapTitle()
                     mapVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                     mapVC.navigationItem.leftItemsSupplementBackButton = true
+                }
+            }
+        } else if segue.identifier == "SegueSuggestGeocode" {
+            if let suggestionVC = segue.destinationViewController as? GeocodeSuggestionViewController {
+                suggestionVC.suggestGeocodeDelegate = self
+                
+                if let splitVC = splitViewController {
+                    mapViewController = (splitVC.viewControllers.last as! UINavigationController).topViewController as? MapViewController
+                    let mapCamera = mapViewController?.mapView.camera
+                    suggestionVC.mapCamera = mapCamera
                 }
             }
         }

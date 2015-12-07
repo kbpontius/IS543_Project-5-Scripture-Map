@@ -17,10 +17,13 @@ class ScripturesViewController: UIViewController, GeocodingSuggestionDelegate {
     var chapter = -1
     
     weak var mapViewController: MapViewController?
+    lazy var backgroundQueue = dispatch_queue_create("background thread", nil)
     
     // MARK: - OUTLETS
     
     @IBOutlet weak var webView: CustomWebView!
+    
+    // MARK: - VIEW METHODS
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +43,62 @@ class ScripturesViewController: UIViewController, GeocodingSuggestionDelegate {
     }
     
     func didSuggestLocationToGeocode(latitude: Double, longitude: Double, viewLatitude: Double, viewLongitude: Double, viewTilt: Double, viewRoll: Double, viewAltitude: Double, viewHeading: Double) {
-        print(String("\(latitude) , \(longitude)"))
+        hideContextMenu()
+        
+        dispatch_async(backgroundQueue) {
+            let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+            
+            config.allowsCellularAccess = true
+            config.timeoutIntervalForRequest = 15.0
+            config.timeoutIntervalForResource = 15.0
+            config.HTTPMaximumConnectionsPerHost = 2
+            
+            let session = NSURLSession(configuration: config)
+            let request = NSURLRequest(URL: NSURL(string: "someREQUEST")!)
+            
+            var succeeded = false
+            
+            let task = session.dataTaskWithRequest(request) { data, response, error in
+                let placename = 
+                let parametersDictionary = ["placename" : placename, "latitude" : String(latitude)]
+                if error != nil {
+                    print("ERROR: \(error)")
+                } else {
+                    if let resultData = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) {
+                        if let resultDictionary = resultData as? NSDictionary {
+                            if let code = resultDictionary["result"] as? Int {
+                                if code == 0 {
+                                    succeeded = true
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if !succeeded {
+                    let alertController = UIAlertController(title: "ERROR", message: "Failed to connect.\nPlease check your network connection.", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+            }
+            
+            task.resume()
+        }
+    }
+    
+    // MARK: - ACTION METHODS
+    
+    @IBAction func cancelSuggestionUnwind(segue: UIStoryboardSegue) {
+        hideContextMenu()
     }
     
     // MARK: - HELPER METHODS
+    
+    private func hideContextMenu() {
+        webView.userInteractionEnabled = false
+        webView.userInteractionEnabled = true
+    }
     
     private func configureDetailVC() {
         if let splitVC = splitViewController {

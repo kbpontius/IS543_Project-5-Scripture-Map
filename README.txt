@@ -11,8 +11,10 @@ Notes:
 
 		- This map also adopts the current location of the map, if the map detail view is visible (iPhone 6 Plus).
 
+	GeocodeSuggestionVC:
+		- While I could've set up the tabbing feature where the you can tab from one box to the other, I found that the "Done"/"Return" buttons were perfect for dismissin the keyboard. Particularly on smaller phones, it's important that the keyboard disappear when the user was done with a field, because then they were able to see the custom map view that I added.
+
 User Feedback:
 	
 Extra Credit:
 	- Instead of only passing the values from the detail view controller, I created a custom map that lives inside the GeocodeSuggestionViewController. This map enables the user to dynamically interact with the values they're inputing and either see where their new values take the on the map, or work backwards and set the values basedo on where the map view is at that time. Cool eh? :)
-	

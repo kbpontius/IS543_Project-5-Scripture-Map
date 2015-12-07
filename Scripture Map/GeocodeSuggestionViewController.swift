@@ -60,7 +60,7 @@ class GeocodeSuggestionViewController: UIViewController {
     }
 
     @IBAction func cancelTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("segueUnwindToCancel", sender: self)
     }
     
     @IBAction func saveTapped(sender: AnyObject) {

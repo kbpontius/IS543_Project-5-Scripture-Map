@@ -33,6 +33,7 @@ class GeocodeSuggestionViewController: UIViewController {
     private func setupDefaultValues() {
         if let camera = mapCamera {
             loadMapCamera(camera)
+            refreshMapViewWithNewTextFieldValues(false)
         }
     }
     
@@ -89,10 +90,10 @@ class GeocodeSuggestionViewController: UIViewController {
     // however, due to a great lack of available time to work on
     // this I'm going to just assume that the value passed in is a
     // double, like it should be. :)
-    private func refreshMapViewWithNewTextFieldValues() {
+    private func refreshMapViewWithNewTextFieldValues(animated: Bool) {
         let camera = MKMapCamera(lookingAtCenterCoordinate: CLLocationCoordinate2D(latitude: Double(txtLatitude.text ?? "") ?? 0, longitude: Double(txtLongitude.text ?? "") ?? 0), fromEyeCoordinate: CLLocationCoordinate2D(latitude: Double(txtViewLatitude.text ?? "") ?? 0, longitude: Double(txtViewLongitude.text ?? "") ?? 0), eyeAltitude: Double(txtViewAltitude.text ?? "") ?? 0)
         
-        mapView.setCamera(camera, animated: true)
+        mapView.setCamera(camera, animated: animated)
     }
     
     // Just a small bit of validation before evaluating.
@@ -115,6 +116,6 @@ class GeocodeSuggestionViewController: UIViewController {
 extension GeocodeSuggestionViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         validateTextFields(textField)
-        refreshMapViewWithNewTextFieldValues()
+        refreshMapViewWithNewTextFieldValues(true)
     }
 }

@@ -2,7 +2,6 @@
 PROJECT #5 - NETWORKING & USER INPUT
 ------------------------------------------
 
-
 Notes:
 	Custom Map View:
 		- This map view adopts the values placed in the text field after any one of the UITextFields ends editing. While there is very little validation to ensure that the the numbers are actually valid (and not some other form of text), it will ensure that the textfield is either a valid number or set it to 0 when the values are plugged into the map or passed to the delegate view controller. 

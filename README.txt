@@ -23,3 +23,5 @@ User Feedback:
 
 Extra Credit:
 	- Instead of only passing the values from the detail view controller, I created a custom map that lives inside the GeocodeSuggestionViewController. This map enables the user to dynamically interact with the values they're inputing and either see where their new values take the on the map, or work backwards and set the values basedo on where the map view is at that time. Cool eh? :)
+
+	- This custom map view automatically pans to the user's new location after the user updated either the Latitude or the Longitude, as long as they both have values in them.

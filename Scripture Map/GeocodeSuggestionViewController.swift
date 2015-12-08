@@ -64,21 +64,47 @@ class GeocodeSuggestionViewController: UIViewController {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) {
-            let latitude = Double(self.txtLatitude.text ?? "") ?? 0
-            let longitude = Double(self.txtLongitude.text ?? "") ?? 0
-            let viewLatitude = Double(self.txtViewLatitude.text ?? "") ?? 0
-            let viewLongitude = Double(self.txtViewLongitude.text ?? "") ?? 0
-            let viewTilt = Double(self.txtViewTilt.text ?? "") ?? 0
-            let viewRoll = Double(self.txtViewRoll.text ?? "") ?? 0
-            let viewAltitude = Double(self.txtViewAltitude.text ?? "") ?? 0
-            let viewHeading = Double(self.txtViewHeading.text ?? "") ?? 0
-            
-            self.suggestGeocodeDelegate.didSuggestLocationToGeocode(latitude, longitude: longitude, viewLatitude: viewLatitude, viewLongitude: viewLongitude, viewTilt: viewTilt, viewRoll: viewRoll, viewAltitude: viewAltitude, viewHeading: viewHeading)
+        validateLatLong() {
+            self.dismissViewControllerAnimated(true) {
+                // NOTE: First cast to Double to ensure the value is a valid number,
+                // then back to String for the method call.
+                let latitude = String(Double(self.txtLatitude.text ?? "") ?? 0)
+                let longitude = String(Double(self.txtLongitude.text ?? "") ?? 0)
+                let viewLatitude = String(Double(self.txtViewLatitude.text ?? "") ?? 0)
+                let viewLongitude = String(Double(self.txtViewLongitude.text ?? "") ?? 0)
+                let viewTilt = String(Double(self.txtViewTilt.text ?? "") ?? 0)
+                let viewRoll = String(Double(self.txtViewRoll.text ?? "") ?? 0)
+                let viewAltitude = String(Double(self.txtViewAltitude.text ?? "") ?? 0)
+                let viewHeading = String(Double(self.txtViewHeading.text ?? "") ?? 0)
+                
+                self.suggestGeocodeDelegate.didSuggestLocationToGeocode(latitude, longitude: longitude, viewLatitude: viewLatitude, viewLongitude: viewLongitude, viewTilt: viewTilt, viewRoll: viewRoll, viewAltitude: viewAltitude, viewHeading: viewHeading)
+            }
         }
     }
     
     // MARK: - HELPER METHODS
+    
+    private func validateLatLong(onSuccess: (()->Void)?) {
+        let latIsValid = Double(txtLatitude.text!) != nil
+        let longIsValid = Double(txtLongitude.text!) != nil
+        let highlightColor = UIColor(red: 255/255, green: 116/255, blue: 110/255, alpha: 1.0)
+        
+        if latIsValid {
+            txtLatitude.backgroundColor = UIColor.whiteColor()
+        } else {
+            txtLatitude.backgroundColor = highlightColor
+        }
+        
+        if longIsValid {
+            txtLongitude.backgroundColor = UIColor.whiteColor()
+        } else {
+            txtLongitude.backgroundColor = highlightColor
+        }
+        
+        if latIsValid && longIsValid {
+            onSuccess?()
+        }
+    }
     
     private func loadMapCamera(mapCamera: MKMapCamera) {
         txtLongitude.text = String(mapCamera.centerCoordinate.longitude)
@@ -100,25 +126,34 @@ class GeocodeSuggestionViewController: UIViewController {
     private func refreshMapViewWithNewTextFieldValues(animated: Bool) {
         // This prevents the default values of 0 being taken before the latitude & longitude are provided.
         if !txtLatitude.text!.isEmpty && !txtLongitude.text!.isEmpty {
-            let camera = MKMapCamera(lookingAtCenterCoordinate: CLLocationCoordinate2D(latitude: Double(txtLatitude.text ?? "") ?? 0, longitude: Double(txtLongitude.text ?? "") ?? 0), fromEyeCoordinate: CLLocationCoordinate2D(latitude: Double(txtViewLatitude.text ?? "") ?? 0, longitude: Double(txtViewLongitude.text ?? "") ?? 0), eyeAltitude: Double(txtViewAltitude.text ?? "") ?? 0)
+            let centerCoordinate = CLLocationCoordinate2D(latitude: Double(txtLatitude.text ?? "") ?? 0, longitude: Double(txtLongitude.text ?? "") ?? 0)
+            let eyeCoordinate = CLLocationCoordinate2D(latitude: Double(txtViewLatitude.text ?? "") ?? 0, longitude: Double(txtViewLongitude.text ?? "") ?? 0)
+            let altitude = Double(txtViewAltitude.text ?? "") ?? 0
+            
+            let camera = MKMapCamera(lookingAtCenterCoordinate: centerCoordinate, fromEyeCoordinate: eyeCoordinate, eyeAltitude: altitude)
             
             mapView.setCamera(camera, animated: animated)
+            
         }
     }
     
     // Just a small bit of validation before evaluating.
     private func validateTextFields(textField: UITextField) {
         // Prevent any of the textfields from being 0.
-        if textField.text!.isEmpty {
+        if textField.text!.isEmpty && textField != txtLatitude && textField != txtLongitude {
             textField.text = "0"
         }
         
-        if textField == txtLongitude {
-            txtViewLongitude.text = txtLongitude.text
-        }
-        
-        if textField == txtLatitude {
-            txtViewLatitude.text = txtLatitude.text
+        if textField == txtLatitude || textField == txtLongitude {
+            if textField == self.txtLongitude {
+                self.txtViewLongitude.text = self.txtLongitude.text
+            }
+            
+            if textField == self.txtLatitude {
+                self.txtViewLatitude.text = self.txtLatitude.text
+            }
+            
+            validateLatLong(nil)
         }
     }
 }

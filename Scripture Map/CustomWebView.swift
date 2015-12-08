@@ -14,8 +14,9 @@ class CustomWebView: UIWebView {
     
     func suggestGeocode(sender: AnyObject?) {
         let highlightedText = self.stringByEvaluatingJavaScriptFromString("window.getSelection().toString()")
+        let highlightedOffset = self.stringByEvaluatingJavaScriptFromString("getSelectionOffset()")
         
-        geocodingDelegate!.didSuggestTextToGeocode(highlightedText ?? "")
+        geocodingDelegate!.didSuggestTextToGeocode(highlightedText ?? "", offset: highlightedOffset ?? "noOffset")
     }
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
@@ -28,6 +29,6 @@ class CustomWebView: UIWebView {
 }
 
 protocol GeocodingSuggestionDelegate {
-    func didSuggestTextToGeocode(text: String)
-    func didSuggestLocationToGeocode(latitude: Double, longitude: Double, viewLatitude: Double, viewLongitude: Double, viewTilt: Double, viewRoll: Double, viewAltitude: Double, viewHeading: Double)
+    func didSuggestTextToGeocode(text: String, offset: String)
+    func didSuggestLocationToGeocode(latitude: String, longitude: String, viewLatitude: String, viewLongitude: String, viewTilt: String, viewRoll: String, viewAltitude: String, viewHeading: String)
 }

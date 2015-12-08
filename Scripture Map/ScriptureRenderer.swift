@@ -48,13 +48,7 @@ class ScriptureRenderer {
     // MARK: - Singleton
 
     // See http://bit.ly/1tdRybj for a discussion of this singleton pattern.
-    class var sharedRenderer : ScriptureRenderer {
-        struct Singleton {
-            static let instance = ScriptureRenderer()
-        }
-
-        return Singleton.instance
-    }
+    static let sharedRenderer = ScriptureRenderer()
 
     private init() {
         // This guarantees that code outside this file can't instantiate a ScriptureRenderer.
@@ -118,7 +112,10 @@ class ScriptureRenderer {
             page += "</div>"
         }
 
-        page += "</div></body></html>"
+        let scriptPath = NSBundle.mainBundle().pathForResource("geocode", ofType: "js")!
+        let script = try! NSString(contentsOfFile: scriptPath, encoding: NSUTF8StringEncoding)
+        
+        page += "</div></body><script type=\"text/javascript\">\(script)</script></html>"
 
         return page.convertToHtmlEntities()
     }

@@ -14,7 +14,12 @@ Notes:
 	GeocodeSuggestionVC:
 		- While I could've set up the tabbing feature where the you can tab from one box to the other, I found that the "Done"/"Return" buttons were perfect for dismissin the keyboard. Particularly on smaller phones, it's important that the keyboard disappear when the user was done with a field, because then they were able to see the custom map view that I added.
 
+		- As specified in the specs, I validate whether the user has entered lat and long before saving the data; however, I've chosen to add a soft red background color when the user fails to put in valid numbers for latitude and longitude. Hopefully this makes it painfully evident what the user needs in order to save the data.
+
 User Feedback:
-	
+		- First, the user would've liked to see the location actually saved to the place in the scripture view so they could come back later and actually use the newly-created link to the map.
+
+		- Second, in the GeocodeSuggestionVC, the user also wanted to have the default altitude set higher (I went with 10,000,000) b/c the map was hard to use when it was zoomed in all the way (which zooms automatically after Latitude & Longitude are entered).
+
 Extra Credit:
 	- Instead of only passing the values from the detail view controller, I created a custom map that lives inside the GeocodeSuggestionViewController. This map enables the user to dynamically interact with the values they're inputing and either see where their new values take the on the map, or work backwards and set the values basedo on where the map view is at that time. Cool eh? :)

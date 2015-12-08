@@ -15,6 +15,8 @@ class ScripturesViewController: UIViewController, GeocodingSuggestionDelegate {
     
     var book: Book!
     var chapter = -1
+    var highlightedText = ""
+    var highlightedTextOffset = ""
     
     weak var mapViewController: MapViewController?
     lazy var backgroundQueue = dispatch_queue_create("background thread", nil)
@@ -38,11 +40,14 @@ class ScripturesViewController: UIViewController, GeocodingSuggestionDelegate {
     
     // MARK: - DELEGATE CALLBACK
     
-    func didSuggestTextToGeocode(text: String) {
+    func didSuggestTextToGeocode(highlightedText: String, offset: String) {
+        self.highlightedText = highlightedText
+        self.highlightedTextOffset = offset
+        
         performSegueWithIdentifier("SegueSuggestGeocode", sender: self)
     }
     
-    func didSuggestLocationToGeocode(latitude: Double, longitude: Double, viewLatitude: Double, viewLongitude: Double, viewTilt: Double, viewRoll: Double, viewAltitude: Double, viewHeading: Double) {
+    func didSuggestLocationToGeocode(latitude: String, longitude: String, viewLatitude: String, viewLongitude: String, viewTilt: String, viewRoll: String, viewAltitude: String, viewHeading: String) {
         hideContextMenu()
         
         dispatch_async(backgroundQueue) {
@@ -53,14 +58,14 @@ class ScripturesViewController: UIViewController, GeocodingSuggestionDelegate {
             config.timeoutIntervalForResource = 15.0
             config.HTTPMaximumConnectionsPerHost = 2
             
+            let parametersDictionary = ["placename" : self.highlightedText, "offset" : self.highlightedTextOffset, "latitude" : latitude, "longitude" : longitude, "viewLatitude" : viewLatitude, "viewLongitude" : viewLongitude, "viewTilt" : viewTilt, "viewRoll" : viewRoll, "viewAltitude" : viewAltitude, "viewHeading" : viewHeading, "bookId" : String(self.book.id), "chapter" : String(self.book.numChapters > 1 ? self.chapter : 0)]
             let session = NSURLSession(configuration: config)
-            let request = NSURLRequest(URL: NSURL(string: "someREQUEST")!)
+            let requestURL = "http://scriptures.byu.edu/mapscrip/suggestpm.php?\(parametersDictionary.stringFromHttpParameters())"
+            let request = NSURLRequest(URL: NSURL(string: requestURL)!)
             
             var succeeded = false
             
             let task = session.dataTaskWithRequest(request) { data, response, error in
-                let placename = 
-                let parametersDictionary = ["placename" : placename, "latitude" : String(latitude)]
                 if error != nil {
                     print("ERROR: \(error)")
                 } else {
@@ -76,10 +81,12 @@ class ScripturesViewController: UIViewController, GeocodingSuggestionDelegate {
                 }
                 
                 if !succeeded {
-                    let alertController = UIAlertController(title: "ERROR", message: "Failed to connect.\nPlease check your network connection.", preferredStyle: .Alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let alertController = UIAlertController(title: "ERROR", message: "Failed to connect.\nPlease check your network connection.", preferredStyle: .Alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
                 }
             }
             

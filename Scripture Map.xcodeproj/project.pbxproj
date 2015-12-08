@@ -21,7 +21,6 @@
 		2786D8121C07B1B900A1874D /* GeoPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D80B1C07B1B900A1874D /* GeoPlace.swift */; };
 		2786D8131C07B1B900A1874D /* MapScripturesIcon.psd in Resources */ = {isa = PBXBuildFile; fileRef = 2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */; };
 		2786D8141C07B1B900A1874D /* scripture.css in Resources */ = {isa = PBXBuildFile; fileRef = 2786D80D1C07B1B900A1874D /* scripture.css */; };
-		2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */; };
 		2786D8531C07B3E300A1874D /* VolumesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */; };
 		2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */; };
 		2786D8571C07B86D00A1874D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786D8561C07B86D00A1874D /* MapKit.framework */; };
@@ -31,6 +30,8 @@
 		27B40F5F1C1619FC0081DE88 /* CustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B40F5E1C1619FC0081DE88 /* CustomWebView.swift */; };
 		27B40F681C161ED90081DE88 /* GeocodeSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B40F671C161ED90081DE88 /* GeocodeSuggestionViewController.swift */; };
 		27B40F6A1C163F560081DE88 /* EncodingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B40F691C163F560081DE88 /* EncodingExtensions.swift */; };
+		27B40F6C1C164BB70081DE88 /* ScriptureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B40F6B1C164BB70081DE88 /* ScriptureRenderer.swift */; };
+		27B40F6E1C164BC90081DE88 /* geocode.js in Resources */ = {isa = PBXBuildFile; fileRef = 27B40F6D1C164BC90081DE88 /* geocode.js */; };
 		27BED1E31C08345C00AF4733 /* GeoPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BED1E21C08345C00AF4733 /* GeoPin.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,7 +130,6 @@
 		2786D80B1C07B1B900A1874D /* GeoPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPlace.swift; sourceTree = "<group>"; };
 		2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = MapScripturesIcon.psd; sourceTree = "<group>"; };
 		2786D80D1C07B1B900A1874D /* scripture.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = scripture.css; sourceTree = "<group>"; };
-		2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureRenderer.swift; sourceTree = "<group>"; };
 		2786D8161C07B26800A1874D /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		2786D8521C07B3E300A1874D /* VolumesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumesTableViewController.swift; sourceTree = "<group>"; };
 		2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +140,8 @@
 		27B40F5E1C1619FC0081DE88 /* CustomWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomWebView.swift; sourceTree = "<group>"; };
 		27B40F671C161ED90081DE88 /* GeocodeSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeSuggestionViewController.swift; sourceTree = "<group>"; };
 		27B40F691C163F560081DE88 /* EncodingExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingExtensions.swift; sourceTree = "<group>"; };
+		27B40F6B1C164BB70081DE88 /* ScriptureRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureRenderer.swift; sourceTree = "<group>"; };
+		27B40F6D1C164BC90081DE88 /* geocode.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = geocode.js; sourceTree = "<group>"; };
 		27BED1E21C08345C00AF4733 /* GeoPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 				2786D80C1C07B1B900A1874D /* MapScripturesIcon.psd */,
 				2786D80D1C07B1B900A1874D /* scripture.css */,
 				2786D7FE1C07B06F00A1874D /* Info.plist */,
+				27B40F6D1C164BC90081DE88 /* geocode.js */,
 				2786D7F91C07B06F00A1874D /* Assets.xcassets */,
 			);
 			name = Assets;
@@ -204,7 +207,6 @@
 				2786D8541C07B3EF00A1874D /* BooksTableViewController.swift */,
 				2786D85A1C07FFFE00A1874D /* ChaptersTableViewController.swift */,
 				27B40F5E1C1619FC0081DE88 /* CustomWebView.swift */,
-				27B40F691C163F560081DE88 /* EncodingExtensions.swift */,
 				27B40F671C161ED90081DE88 /* GeocodeSuggestionViewController.swift */,
 				2786D7F41C07B06F00A1874D /* MapViewController.swift */,
 				2748452B1C086FBA00054395 /* MessageViewController.swift */,
@@ -231,7 +233,8 @@
 				2786D80A1C07B1B900A1874D /* GeoDatabase.swift */,
 				27BED1E21C08345C00AF4733 /* GeoPin.swift */,
 				2786D80B1C07B1B900A1874D /* GeoPlace.swift */,
-				2786D80E1C07B1B900A1874D /* ScriptureRenderer.swift */,
+				27B40F6B1C164BB70081DE88 /* ScriptureRenderer.swift */,
+				27B40F691C163F560081DE88 /* EncodingExtensions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			files = (
 				2786D7FD1C07B06F00A1874D /* LaunchScreen.storyboard in Resources */,
 				2786D8141C07B1B900A1874D /* scripture.css in Resources */,
+				27B40F6E1C164BC90081DE88 /* geocode.js in Resources */,
 				2786D8131C07B1B900A1874D /* MapScripturesIcon.psd in Resources */,
 				2786D8101C07B1B900A1874D /* geo.21.sqlite in Resources */,
 				2786D7FA1C07B06F00A1874D /* Assets.xcassets in Resources */,
@@ -401,9 +405,9 @@
 				2786D7F51C07B06F00A1874D /* MapViewController.swift in Sources */,
 				2786D8591C07B97D00A1874D /* ScripturesViewController.swift in Sources */,
 				27BED1E31C08345C00AF4733 /* GeoPin.swift in Sources */,
-				2786D8151C07B1B900A1874D /* ScriptureRenderer.swift in Sources */,
 				27B40F681C161ED90081DE88 /* GeocodeSuggestionViewController.swift in Sources */,
 				2786D8551C07B3EF00A1874D /* BooksTableViewController.swift in Sources */,
+				27B40F6C1C164BB70081DE88 /* ScriptureRenderer.swift in Sources */,
 				2786D85B1C07FFFE00A1874D /* ChaptersTableViewController.swift in Sources */,
 				2786D8121C07B1B900A1874D /* GeoPlace.swift in Sources */,
 				2786D7F11C07B06F00A1874D /* AppDelegate.swift in Sources */,
